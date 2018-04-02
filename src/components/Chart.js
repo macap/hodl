@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { AreaChart, Area, Tooltip } from 'recharts';
+import PropTypes from 'prop-types';
 
 class Chart extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Chart extends Component {
   render() {
     const width = (this.container.current) ? this.container.current.offsetWidth : 300;
     const { data } = this.props;
-    const mappedData = Object.keys(data).map(day => ({ name: day, value: data[day]}));
+    const mappedData = Object.keys(data).map(day => ({ name: day, value: data[day] }));
     return (
       <div ref={this.container}>
         <AreaChart width={width} height={200} data={mappedData}>
@@ -27,5 +28,10 @@ class Chart extends Component {
     );
   }
 }
+
+Chart.propTypes = {
+  // eslint-disable-next-line
+  data: PropTypes.array,
+};
 
 export default Chart;

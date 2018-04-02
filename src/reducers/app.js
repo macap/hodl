@@ -2,9 +2,7 @@ const defaultAppState = {
   online: true,
 };
 
-const app = (state = defaultAppState, action) => {
-  return state;
-}
+const app = (state = defaultAppState) => state;
 
 
 export default app;

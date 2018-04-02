@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { fetchCurrentRates, fetchHistorcalRates } from '../actions/rates';
 import Chart from './Chart';
 
@@ -48,7 +50,7 @@ class Rates extends Component {
         <Chart data={chartData} />
         <div className="updated-at">
           Updated:
-          {date && ` ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
+          {date && date.toLocaleDateString && ` ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
         </div>
         <div className="disclaimer">
           Powered by
@@ -58,6 +60,17 @@ class Rates extends Component {
     );
   }
 }
+
+Rates.propTypes = {
+  // eslint-disable-next-line
+  data: PropTypes.array.isRequired,
+  rate: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
+  chartData: PropTypes.shape.isRequired,
+  fetchCurrentRates: PropTypes.func.isRequired,
+  fetchHistorcalRates: PropTypes.func.isRequired,
+};
+
 
 const mapStateToProps = state => ({
   rate: state.rates.current.rate,

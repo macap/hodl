@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addTransaction } from '../actions/wallet';
 
 class WalletForm extends Component {
@@ -9,17 +10,17 @@ class WalletForm extends Component {
   }
 
   handleDateChange = (evt) => {
-    this.setState({date: evt.target.value});
+    this.setState({ date: evt.target.value });
   }
 
   handleValueChange = (evt) => {
-    this.setState({value: evt.target.value});
+    this.setState({ value: evt.target.value });
   }
 
   addTransaction = () => {
     const { date, value } = this.state;
     this.props.addTransaction(date, value);
-    this.setState({date: '', value: ''});
+    this.setState({ date: '', value: '' });
   }
 
   render() {
@@ -30,8 +31,13 @@ class WalletForm extends Component {
         <input type="number" value={value} onChange={this.handleValueChange} />
         <button onClick={this.addTransaction}>Add</button>
       </div>
-    )
+    );
   }
 }
+
+WalletForm.propTypes = {
+  addTransaction: PropTypes.func.isRequired,
+};
+
 
 export default connect(null, { addTransaction })(WalletForm);

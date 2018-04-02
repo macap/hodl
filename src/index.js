@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import 'normalize.css';
-// import registerServiceWorker from 'utils/registerServiceWorker';
+import registerServiceWorker from 'utils/registerServiceWorker';
 import App from 'components/App';
 import store from './store';
 
@@ -28,4 +28,4 @@ if (module.hot) {
   });
 }
 
-// registerServiceWorker();
+registerServiceWorker();

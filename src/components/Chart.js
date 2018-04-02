@@ -21,7 +21,7 @@ class Chart extends Component {
               <stop offset="95%" stopColor="#fff" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <Tooltip />
+          <Tooltip wrapperStyle={{ background: '#243b55' }} />
           <Area type="monotone" dataKey="value" stroke="#fff" fillOpacity={1} fill="url(#colorUv)" />
         </AreaChart>
       </div>

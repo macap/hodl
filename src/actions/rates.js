@@ -14,7 +14,7 @@ export const fetchCurrentRates = () => (
   }
 );
 
-export const fetchHistorcalRates = (from = '2017-12-01', to = '2018-03-29') => (
+export const fetchHistorcalRates = (from = '2018-06-01', to = '2018-09-28') => (
   {
     type: FETCH_HISTORICAL_RATES,
     payload: {

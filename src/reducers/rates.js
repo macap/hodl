@@ -3,6 +3,7 @@ import { FETCH_CURRENT_RATES, FETCH_HISTORICAL_RATES } from '../actions/rates';
 const defaultRatesState = {
   current: {
     rate: null,
+    rateUSD: null,
     updated: null,
   },
   historical: {
@@ -20,6 +21,7 @@ const rates = (state = defaultRatesState, action) => {
         ...state,
         current: {
           rate: action.payload.data.bpi.PLN.rate,
+          rateUSD: action.payload.data.bpi.USD.rate,
           updated: new Date(action.payload.data.time.updatedISO),
         },
       };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addTransaction } from '../actions/wallet';
+import { addTransaction } from 'redux/actions/wallet';
 
 class WalletForm extends Component {
   state = {
@@ -10,31 +10,38 @@ class WalletForm extends Component {
     value: '',
     cost: '',
     isOpen: false,
-  }
+  };
 
-  handleDateChange = (evt) => {
+  handleDateChange = evt => {
     this.setState({ date: evt.target.value });
-  }
+  };
 
-  handleValueChange = (evt) => {
+  handleValueChange = evt => {
     this.setState({ value: evt.target.value });
-  }
+  };
 
-  handleCostChange = (evt) => {
+  handleCostChange = evt => {
     this.setState({ cost: evt.target.value });
-  }
+  };
 
   addTransaction = () => {
     const { date, value, cost } = this.state;
     this.props.addTransaction(date, value, cost);
     this.setState({ date: '', value: '', isOpen: false });
-  }
+  };
 
   render() {
     const { date, value, cost, isOpen } = this.state;
     return (
-      <div className={classNames('wallet-form', {'wallet-form--open': isOpen })}>
-        <button className="wallet-form__toggle" onClick={e => {this.setState((s) => ({isOpen: !s.isOpen}))}}>+ Add transaction</button>
+      <div className={classNames('wallet-form', { 'wallet-form--open': isOpen })}>
+        <button
+          className="wallet-form__toggle"
+          onClick={e => {
+            this.setState(s => ({ isOpen: !s.isOpen }));
+          }}
+        >
+          + Add transaction
+        </button>
         <div className="wallet-form__collapse">
           <label>Transaction date</label>
           <input type="date" value={date} onChange={this.handleDateChange} />
@@ -53,5 +60,7 @@ WalletForm.propTypes = {
   addTransaction: PropTypes.func.isRequired,
 };
 
-
-export default connect(null, { addTransaction })(WalletForm);
+export default connect(
+  null,
+  { addTransaction },
+)(WalletForm);

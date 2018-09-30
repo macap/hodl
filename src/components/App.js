@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import {
   Route,
   NavLink as Link,
@@ -13,6 +14,7 @@ class App extends Component {
     showInstallMessage: false,
     online: true,
   }
+
   componentWillMount() {
     if (window.navigator.userAgent.indexOf('iPhone') !== -1) {
       if (!window.navigator.standalone) {
@@ -33,11 +35,12 @@ class App extends Component {
 
   setOnlineStatus = isOnline => this.setState({ online: isOnline })
 
+  isIos = () => window.navigator.userAgent.indexOf('iPhone') !== -1;
 
   render() {
     const { showInstallMessage, online } = this.state;
     return (
-      <div>
+      <div className={classNames({ 'is-ios': this.isIos() })}>
         <ul className="nav">
           <li><Link exact activeClassName="active" to="/" href="/">Rates</Link></li>
           <li><Link activeClassName="active" to="/wallet" href="/wallet">Wallet</Link></li>

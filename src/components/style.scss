@@ -13,7 +13,9 @@ $fw-bold: 700;
     head, body {
       width: 100%;
       max-width: 100%;
+      padding-top: 44px;
     }
+
     body {
       background: linear-gradient(45deg, #141e30, #243b55);
       color: #fff;
@@ -27,6 +29,10 @@ $fw-bold: 700;
 
   .scroll-box {
     overflow-y: auto;
+  }
+
+  .is-ios {
+    padding-top: 44px;
   }
 
 

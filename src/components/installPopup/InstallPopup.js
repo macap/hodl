@@ -5,8 +5,7 @@ import styles from './InstallPopup.scss';
 
 class InstallPopup extends Component {
   state = {
-    // showInstallMessage: false,
-    showInstallMessage: true,
+    showInstallMessage: false,
   };
 
   componentWillMount() {

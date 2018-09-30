@@ -36,7 +36,7 @@ class WalletForm extends Component {
       <div className={classNames('wallet-form', { 'wallet-form--open': isOpen })}>
         <button
           className="wallet-form__toggle"
-          onClick={e => {
+          onClick={() => {
             this.setState(s => ({ isOpen: !s.isOpen }));
           }}
         >

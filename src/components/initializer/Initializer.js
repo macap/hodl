@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -6,7 +6,6 @@ import { fetchCurrentRates, fetchHistorcalRates } from 'redux/actions/rates';
 
 class Initializer extends Component {
   componentDidMount() {
-    console.log('did mount');
     this.props.fetchCurrentRates();
 
     const from = moment()

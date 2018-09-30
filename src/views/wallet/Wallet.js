@@ -37,6 +37,9 @@ const Wallet = ({ transactions, diff, currentValue, total }) => (
 Wallet.propTypes = {
   // eslint-disable-next-line
   transactions: PropTypes.array.isRequired,
+  diff: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  currentValue: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => {

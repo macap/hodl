@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -6,49 +6,49 @@ import PropTypes from 'prop-types';
 
 import { Chart } from 'components/';
 
-class Rates extends Component {
-  render() {
-    const { date, rate, chartData, previousRate } = this.props;
-    const diff = previousRate && rate ? Number(rate.replace(',', '')) - previousRate : 0;
-    return (
-      <div>
-        <div className="ticker-box">
-          <div className="ticker-box_currency">BTC</div>
-          <div className="ticker-box_rate">
-            {rate || '-'}
-            <span className="ticker-box_rate-currency">PLN</span>
-          </div>
-          <div
-            className={classNames('ticker-box_change', {
-              'ticker-box_change--up': diff > 0,
-              'ticker-box_change--down': diff < 0,
-            })}
-          >
-            {diff.toFixed(2)} PLN
-          </div>
+const Rates = ({ date, rate, chartData, previousRate }) => {
+  const diff = previousRate && rate ? Number(rate.replace(',', '')) - previousRate : 0;
+  return (
+    <div>
+      <div className="ticker-box">
+        <div className="ticker-box_currency">BTC</div>
+        <div className="ticker-box_rate">
+          {rate || '-'}
+          <span className="ticker-box_rate-currency">PLN</span>
         </div>
-        <Chart data={chartData} />
-        <div className="updated-at">
-          Updated:
-          {date &&
-            date.toLocaleDateString &&
-            ` ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
-        </div>
-        <div className="disclaimer">
-          Powered by
-          <a href="https://www.coindesk.com/price/">CoinDesk</a>
+        <div
+          className={classNames('ticker-box_change', {
+            'ticker-box_change--up': diff > 0,
+            'ticker-box_change--down': diff < 0,
+          })}
+        >
+          {diff.toFixed(2)} PLN
         </div>
       </div>
-    );
-  }
-}
+      <Chart data={chartData} />
+      <div className="updated-at">
+        Updated:
+        {date &&
+          date.toLocaleDateString &&
+          ` ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
+      </div>
+      <div className="disclaimer">
+        Powered by
+        <a href="https://www.coindesk.com/price/">CoinDesk</a>
+      </div>
+    </div>
+  );
+};
 
 Rates.propTypes = {
-  // eslint-disable-next-line
-  // data: PropTypes.array.isRequired,
   rate: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   chartData: PropTypes.shape.isRequired,
+  previousRate: PropTypes.number,
+};
+
+Rates.defaultProps = {
+  previousRate: 0,
 };
 
 const mapStateToProps = state => ({

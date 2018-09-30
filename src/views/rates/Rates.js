@@ -3,20 +3,10 @@ import classNames from 'classnames';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchCurrentRates, fetchHistorcalRates } from 'redux/actions/rates';
+
 import { Chart } from 'components/';
 
 class Rates extends Component {
-  componentDidMount() {
-    this.props.fetchCurrentRates();
-
-    const from = moment()
-      .subtract(30, 'days')
-      .format('YYYY-MM-DD');
-    const to = moment().format('YYYY-MM-DD');
-    this.props.fetchHistorcalRates(from, to);
-  }
-
   render() {
     const { date, rate, chartData, previousRate } = this.props;
     const diff = previousRate && rate ? Number(rate.replace(',', '')) - previousRate : 0;
@@ -59,8 +49,6 @@ Rates.propTypes = {
   rate: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   chartData: PropTypes.shape.isRequired,
-  fetchCurrentRates: PropTypes.func.isRequired,
-  fetchHistorcalRates: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -76,7 +64,4 @@ const mapStateToProps = state => ({
   chartData: state.rates.historical.data,
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchCurrentRates, fetchHistorcalRates },
-)(Rates);
+export default connect(mapStateToProps)(Rates);

@@ -2,43 +2,45 @@ $background: #f2f8ff;
 $border: #f9f6f1;
 
 .installPopup {
-  // position: fixed;
-  margin-bottom: 16px;
-  position: relative;
-  background: $background;
-  color: #303030;
-  left: 0;
-  right:0;
+  position: absolute;
+  right: 0;
   bottom: 15px;
+  left: 0;
   display: flex;
+  margin-bottom: 16px;
   padding: 5px 10px;
-  font-size: 12px;
-  align-items: center;
-  border-radius: 5px;
   padding-bottom: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  color: #303030;
+  // position: relative;
+  background: $background;
+  align-items: center;
 
-  &:after, &:before {
-  	top: 100%;
-  	left: 50%;
-  	border: solid transparent;
-  	content: " ";
-  	height: 0;
-  	width: 0;
-  	position: absolute;
-  	pointer-events: none;
+  &:after,
+  &:before {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: solid transparent;
+    content: ' ';
+    pointer-events: none;
   }
 
   &:after {
-  	border-color: rgba(136, 183, 213, 0);
-  	border-top-color: $background;
-  	border-width: 15px;
-  	margin-left: -15px;
+    margin-left: -15px;
+    border-width: 15px;
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: $background;
   }
+
   &:before {
-  	border-color: rgba(194, 225, 245, 0);
-  	border-top-color: $border;
-  	border-width: 16px;
-  	margin-left: -16px;
+    margin-left: -16px;
+    border-width: 16px;
+    border-color: rgba(194, 225, 245, 0);
+    border-top-color: $border;
   }
 }
 
@@ -53,9 +55,7 @@ $border: #f9f6f1;
 }
 
 .left {
-
 }
 
 .right {
-
 }

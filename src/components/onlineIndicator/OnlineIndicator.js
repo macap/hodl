@@ -5,6 +5,10 @@ class OnlineIndicator extends Component {
     online: true,
   };
 
+  componentWillMount() {
+    this.setState({ online: window.navigator.onLine });
+  }
+
   componentDidMount() {
     window.addEventListener('online', () => this.setOnlineStatus(true));
     window.addEventListener('offline', () => this.setOnlineStatus(false));

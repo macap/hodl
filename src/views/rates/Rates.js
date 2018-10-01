@@ -28,12 +28,10 @@ const Rates = ({ date, rate, chartData, previousRate }) => {
       <Chart data={chartData} />
       <div className="updated-at">
         Updated:
-        {date &&
-          date.toLocaleDateString &&
-          ` ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
+        {date && ` ${moment(date).format('YYYY-MM-DD HH:MM')}`}
       </div>
       <div className="disclaimer">
-        Powered by
+        {'Powered by '} 
         <a href="https://www.coindesk.com/price/">CoinDesk</a>
       </div>
     </div>

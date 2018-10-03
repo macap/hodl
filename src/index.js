@@ -2,22 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import { ConnectedRouter } from 'react-router-redux';
 import 'normalize.css';
 import registerServiceWorker from 'utils/registerServiceWorker';
 import { App } from 'views';
-import { CustomConnectedRouter } from 'components';
-import { store, persistor, history } from './redux';
+import { store, history } from './redux';
 
 function render(Component) {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <CustomConnectedRouter history={history}>
-            <Component />
-          </CustomConnectedRouter>
-        </PersistGate>
+        <ConnectedRouter history={history}>
+          <Component />
+        </ConnectedRouter>
       </Provider>
     </AppContainer>,
     document.getElementById('root'),

@@ -1,6 +1,7 @@
 module.exports = {
-  extends: 'airbnb',
+  extends: ['airbnb', 'prettier'],
   parser: 'babel-eslint',
+  plugins: ['prettier'],
   env: {
     jest: true,
     browser: true,
@@ -18,8 +19,8 @@ module.exports = {
     },
   },
   rules: {
-    'react/jsx-filename-extension': [
-      2, { extensions: ['.js'] },
-    ],
+    'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
+    // 'prettier/prettier': ['error'],
+    'jsx-a11y/label-has-for': 'off',
   },
 };

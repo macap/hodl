@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'normalize.css';
 import registerServiceWorker from 'utils/registerServiceWorker';
-import App from 'components/App';
-import CustomConnectedRouter from './CustomConnectedRouter';
-import { store, persistor, history } from './store';
+import { App } from 'views';
+import { CustomConnectedRouter } from 'components';
+import { store, persistor, history } from './redux';
 
 function render(Component) {
   ReactDOM.render(
@@ -27,9 +27,9 @@ function render(Component) {
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./views/app/App', () => {
     // eslint-disable-next-line global-require
-    const nextApp = require('./components/App').default;
+    const nextApp = require('./views/app/App').default;
     render(nextApp);
   });
 }

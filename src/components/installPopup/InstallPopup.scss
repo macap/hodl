@@ -1,0 +1,61 @@
+$background: #f2f8ff;
+$border: #f9f6f1;
+
+.installPopup {
+  position: absolute;
+  right: 0;
+  bottom: 15px;
+  left: 0;
+  display: flex;
+  margin-bottom: 16px;
+  padding: 5px 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  color: #303030;
+  // position: relative;
+  background: $background;
+  align-items: center;
+
+  &:after,
+  &:before {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: solid transparent;
+    content: ' ';
+    pointer-events: none;
+  }
+
+  &:after {
+    margin-left: -15px;
+    border-width: 15px;
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: $background;
+  }
+
+  &:before {
+    margin-left: -16px;
+    border-width: 16px;
+    border-color: rgba(194, 225, 245, 0);
+    border-top-color: $border;
+  }
+}
+
+.icon1 {
+  width: 25px;
+  vertical-align: middle;
+}
+
+.icon2 {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.left {
+}
+
+.right {
+}

@@ -1,5 +1,10 @@
 {
   "projects": {
     "stagign": "hodl-63c3a"
+  },
+  "hosting": {
+    "headers": [
+      { "source":"/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}] }
+    ]
   }
 }
